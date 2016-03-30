@@ -1,0 +1,10 @@
+# Dependencias de bower
+bower_components/
+
+# Dependencias de npm
+node_modules/
+
+# Sparrest
+db/
+server.py
+sparrest-master/

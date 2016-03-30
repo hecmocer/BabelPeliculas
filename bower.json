@@ -1,0 +1,17 @@
+{
+  "name": "BabelPeliculas",
+  "homepage": "https://github.com/hecmocer/BabelPeliculas",
+  "authors": [
+    "Héctor <hecmocer@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.5.3",
+    "bootstrap": "^3.3.6",
+    "angular-route": "^1.5.3"
+  }
+}
