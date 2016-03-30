@@ -9,7 +9,8 @@ angular.module("moviedb").controller("AppCtrl", ["$scope", "$location", "paths",
 
     // model init
     $scope.model = { // es buena practica tener un objeto para el modelo
-        title: ""
+        title: "",
+        user: null
     };
 
     // scope event listeners
