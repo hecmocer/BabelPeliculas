@@ -93,13 +93,13 @@ angular.module("moviedb").service("APIClient",
         // TODO
         // Petición put que alquila una película
         this.rentMovie = function(){
-            this.apiPutRequest(apiPaths.movies, /* DATA */);
+            /*this.apiPutRequest(apiPaths.movies, DATA );*/
         };
 
         // TODO
         // Petición put que desalquila una película
         this.returnMovie = function(){
-            this.apiPutRequest(apiPaths.movies, /* DATA */);
+            /*this.apiPutRequest(apiPaths.movies, DATA );*/
         }
 
         // TODO
