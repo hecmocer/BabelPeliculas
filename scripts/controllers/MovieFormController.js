@@ -10,7 +10,7 @@ angular.module("moviedb").controller("MovieFormController",
         $scope.saveMovie = function(){
             APIClient.addMovie($scope.model).then(
                 function(movie){
-                    $scope.successMessage = "Película guardada! <a href='#/" + paths.movies + movie.id + "'><br>Ver detalle de la película</a>";
+                    $scope.successMessage = "Película guardada! <a href='#" + paths.movies + "/" + movie.id + "'><br>Ver detalle de la película</a>";
                     $scope.model = {};
                     $scope.movieForm.$setPristine();
                 },
