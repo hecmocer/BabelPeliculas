@@ -15,7 +15,10 @@ module.exports = function (grunt) {
                 src: [
                     // Cargamos los paquetes instalados con bower y el codigo fuente de la aplicacion
                     'bower_components/angular/angular.js',
-                    'bower_components/angular-route/angular-route.min.js',
+                    'bower_components/angular-route/angular-route.js',
+                    'bower_components/angular-sanitize/angular-sanitize.js',
+                    'bower_components/jquery/dist/jquery.js',
+                    'bower_components/bootstrap/dist/js/bootstrap.js',
                     'scripts/**/*.js',
                     'scripts/*.js'
                 ],

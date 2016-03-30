@@ -1,13 +1,25 @@
- <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" ng-app="moviedb" ng-controller="AppCtrl">
+
 <head>
+    <title ng-bind-html="model.title">BabelPelículas</title>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="dist/style.css">
 </head>
+
 <body>
-
-<!-- ng-show navbar si no hay user en el scope -->
-<div ng-view></div>
-
+    <!-- ng-show navbar si no hay user en el scope -->
+    <div ng-include="'views/Navbar.html'"></div> <!-- ng-show="model.user!='null'" -->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div ng-view>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="dist/app.js"></script>
 </body>
+
 </html>
