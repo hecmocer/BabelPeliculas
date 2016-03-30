@@ -23,6 +23,13 @@ angular.module("moviedb").service("APIClient",
             return deferred.promise;
         };
 
+        /*
+
+        PREGUNTAR
+        EN POSTMAN EL POST NO FUNCIONA
+
+        */
+
         // Petición POST al API en la url y con los datos para crear pasados como parámetro
         this.apiPostRequest = function(url, data_to_post){
             // Crear el objeto diferido
@@ -66,8 +73,6 @@ angular.module("moviedb").service("APIClient",
             // Devolver la promesa
             return deferred.promise;
         };
-
-
 
         // Petición get del catálogo de películas
         this.getMovieList = function(){
