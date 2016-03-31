@@ -15,12 +15,10 @@ angular.module("moviedb").controller("AppCtrl", ["$scope", "$location", "paths",
 
 
     $scope.model.user = Login.currentUser();
-    console.log($scope.model.user);
 
     // methods
     controller.updateUser = function (name) {
     	$scope.model.user = name;
-    	console.log("emito evento");
     	$scope.$broadcast("$navbarUsername", {name: name});
     }
 

@@ -14,6 +14,7 @@ angular.module("moviedb").controller("MovieDetailController",
             // Pelicula encontrada
             function(movie){
                 $scope.model = movie;
+                $scope.$emit("$changeTitle", movie.title);
             },
             // Pelicula no encontrada
             function(error){
