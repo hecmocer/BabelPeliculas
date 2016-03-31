@@ -121,7 +121,7 @@ angular.module("moviedb").service("APIClient",
                     // funcion de filtrado 'filtro'
                     var filtro = $filter('filter');
                     var search = {
-                        owner: user;
+                        owner: user
                     }
 
                     deferred.resolve(filter(response.data, search));
@@ -152,7 +152,7 @@ angular.module("moviedb").service("APIClient",
                     // funcion de filtrado 'filtro'
                     var filtro = $filter('filter');
                     var search = {
-                        rented_by: user;
+                        rented_by: user
                     }
 
                     deferred.resolve(filter(response.data, search));
