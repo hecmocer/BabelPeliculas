@@ -28,10 +28,10 @@
                 <td>
                     <a href="#/movies/{{::item.id}}">
                         <div ng-if="item.rented_by === null">
-                            <div class="label label-primary">DISPONIBLE</div>
+                            <div class="label label-success">DISPONIBLE</div>
                         </div>
                         <div ng-if="item.rented_by !== null">
-                            <div class="label label-primary">Alquilada</div>
+                            <div class="label label-warning">ALQUILADA</div>
                         </div>
                     </a>
                 </td>
