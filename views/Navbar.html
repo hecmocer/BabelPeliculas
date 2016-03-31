@@ -18,7 +18,8 @@
                 <li ng-class="getClassForItem(paths.newMovie)"><a href="#{{::paths.newMovie}}">Subir película</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="btn btn-primary navbar-btn">Logout</li>
+                <li> {{ model.currentUser }}</li>
+                <li class="btn btn-primary navbar-btn" ng-click="logout()">Logout</li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

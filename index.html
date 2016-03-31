@@ -10,12 +10,14 @@
 
 <body>
     <!-- ng-show navbar si no hay user en el scope -->
-    <div ng-include="'views/Navbar.html'" ng-show="model.user!==null"></div>
     <div ng-include="'views/Login.html'" ng-show="model.user===null"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div ng-view>
+    <div ng-show="model.user!==null">
+        <div ng-include="'views/Navbar.html'"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div ng-view>
+                    </div>
                 </div>
             </div>
         </div>

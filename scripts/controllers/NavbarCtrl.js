@@ -1,6 +1,7 @@
-angular.module("moviedb").controller("NavbarCtrl", ["$scope", "$location", "paths", function($scope, $location, paths) {
+angular.module("moviedb").controller("NavbarCtrl", ["$scope", "$location", "paths", "Login", function($scope, $location, paths, Login) {
     $scope.model = {
-        selectedItem: $location.path()
+        selectedItem: $location.path(),
+        currentUser: Login.currentUser()
     };
     $scope.paths = paths;
 
@@ -17,8 +18,18 @@ angular.module("moviedb").controller("NavbarCtrl", ["$scope", "$location", "path
         }
     }
 
+    $scope.logout = function () {
+    	Login.logout();
+        $scope.$emit("$loggedOut");
+        $scope.model.currentUser = Login.currentUser();
+    }
+
     // scope event listeners
     $scope.$on("$locationChangeSuccess", function(evt, currentRoute) {
         $scope.model.selectedItem = $location.path();
     });
+
+    $scope.$on("$navbarUsername", function (evt, user) {
+        $scope.model.currentUser = user.name;
+    })
 }])
