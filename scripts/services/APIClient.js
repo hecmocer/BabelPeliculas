@@ -97,14 +97,14 @@ angular.module("moviedb").service("APIClient",
         // Petición put que alquila una película
         this.rentMovie = function(data, user){
             data.rented_by = user;
-            this.apiPutRequest(apiPaths.movies, data);
+            this.apiPutRequest(apiPaths.movies+'/'+data.id, data);
         };
 
         // Petición put que desalquila una película
         this.returnMovie = function(data, user){
             if(data.rented_by === user){
                 data.rented_by = null;
-                this.apiPutRequest(apiPaths.movies, data);
+                this.apiPutRequest(apiPaths.movies+'/'+data.id, data);
             }
             else{
                 console.log("CUIDADO! un usuario ha intentado desalquilar una pelicula que no es suya");
