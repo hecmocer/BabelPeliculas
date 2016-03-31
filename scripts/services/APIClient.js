@@ -1,5 +1,5 @@
 angular.module("moviedb").service("APIClient",
-    ["$http", "$q", "apiPaths", function($http, $q, apiPaths){
+    ["$http", "$q", "apiPaths", "$filter", function($http, $q, apiPaths, $filter){
 
         // Petición GET al API en la url pasada como parámetro
         this.apiGetRequest = function(url){
@@ -90,21 +90,25 @@ angular.module("moviedb").service("APIClient",
             return this.apiPostRequest(apiPaths.movies, movie);
         };
 
-        // TODO (como se hace put?)
         // Petición put que alquila una película
-        this.rentMovie = function(){
-            /*this.apiPutRequest(apiPaths.movies, DATA );*/
+        this.rentMovie = function(data, user){
+            data.rented_by = user;
+            this.apiPutRequest(apiPaths.movies, data);
         };
 
-        // TODO
         // Petición put que desalquila una película
-        this.returnMovie = function(){
-            /*this.apiPutRequest(apiPaths.movies, DATA );*/
+        this.returnMovie = function(data, user){
+            if(data.rented_by === user){
+                data.rented_by = null;
+                this.apiPutRequest(apiPaths.movies, data);
+            }
+            else{
+                console.log("CUIDADO! un usuario ha intentado desalquilar una pelicula que no es suya");
+            }
         }
 
-        // TODO (como filtramos?)
         // Petición get que devuelve solo las peliculas que ha creado el usuario
-        this.getCreatedMovieList = function(){
+        this.getCreatedMovieList = function(user){
             // Crear el objeto diferido
             var deferred = $q.defer();
 
@@ -114,9 +118,13 @@ angular.module("moviedb").service("APIClient",
                 function(response){
                     // Resolver la promesa
 
-                    // FILTRAR
+                    // funcion de filtrado 'filtro'
+                    var filtro = $filter('filter');
+                    var search = {
+                        owner: user;
+                    }
 
-                    deferred.resolve(response.data);
+                    deferred.resolve(filter(response.data, search));
                 },
                 // Petición KO
                 function(response){
@@ -131,8 +139,33 @@ angular.module("moviedb").service("APIClient",
 
         // TODO
         // Petición get que devuelve solo las peliculas que ha creado el usuario
-        this.getRentedMovieList = function(){
-            // FILTRAR AL IGUAL QUE EN CREATEDLIST
+        this.getRentedMovieList = function(user){
+            // Crear el objeto diferido
+            var deferred = $q.defer();
+
+            // Trabajo asíncrono: petición get de películas
+            this.getMovieList().then(
+                // Petición OK
+                function(response){
+                    // Resolver la promesa
+
+                    // funcion de filtrado 'filtro'
+                    var filtro = $filter('filter');
+                    var search = {
+                        rented_by: user;
+                    }
+
+                    deferred.resolve(filter(response.data, search));
+                },
+                // Petición KO
+                function(response){
+                    // Rechazar la promesa
+                    deferred.reject(response.data);
+                });
+
+
+            // Devolver la promesa
+            return deferred.promise;
         };
 
     }
