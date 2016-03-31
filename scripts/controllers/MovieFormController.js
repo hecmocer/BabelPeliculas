@@ -1,5 +1,5 @@
 angular.module("moviedb").controller("MovieFormController",
-    [ "$scope", "APIClient", "paths", function($scope, APIClient, paths){
+    [ "$scope", "APIClient", "paths", "Login", function($scope, APIClient, paths, Login){
 
         // Scope init
         $scope.model = {};
@@ -8,7 +8,7 @@ angular.module("moviedb").controller("MovieFormController",
 
         // Scope methods
         $scope.saveMovie = function(){
-            APIClient.addMovie($scope.model).then(
+            APIClient.addMovie($scope.model, Login.currentUser()).then(
                 function(movie){
                     $scope.successMessage = "Película guardada! <a href='#" + paths.movies + "/" + movie.id + "'><br>Ver detalle de la película</a>";
                     $scope.model = {};

@@ -86,7 +86,11 @@ angular.module("moviedb").service("APIClient",
         };
 
         // Petición post que inserta una película
-        this.addMovie = function(movie){
+        this.addMovie = function(movie, user){
+            movie.owner = user;
+            movie.rented_by = null;
+            movie.last_rent_date = null;
+            movie.upload_date = null;
             return this.apiPostRequest(apiPaths.movies, movie);
         };
 
