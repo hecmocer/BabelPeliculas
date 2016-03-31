@@ -1,8 +1,11 @@
 angular.module("moviedb").service("APIClient",
-    ["$http", "$q", "apiPaths", "$filter", function($http, $q, apiPaths, $filter){
+    ["$http", "$q", "apiPaths", "$filter",
+    function($http, $q, apiPaths, $filter){
 
         // Petición GET al API en la url pasada como parámetro
         this.apiGetRequest = function(url){
+            console.log("GET", url);
+
             // Crear el objeto diferido
             var deferred = $q.defer();
 
@@ -32,6 +35,8 @@ angular.module("moviedb").service("APIClient",
 
         // Petición POST al API en la url y con los datos para crear pasados como parámetro
         this.apiPostRequest = function(url, data_to_post){
+            console.log("POST", data_to_post);
+
             // Crear el objeto diferido
             var deferred = $q.defer();
 
@@ -54,6 +59,8 @@ angular.module("moviedb").service("APIClient",
 
         // Petición PUT al API en la url con los datos para modifical pasados como parámetro
         this.apiPutRequest = function(url, data_to_put){
+            console.log("PUT", data_to_put);
+
             // Crear el objeto diferido
             var deferred = $q.defer();
 
@@ -81,8 +88,8 @@ angular.module("moviedb").service("APIClient",
 
         // Petición get de una película en particular
         this.getMovie = function(movieId){
-            var url = apiPaths.movie + movieId;
-            return this.apiRequest(url);
+            var url = apiPaths.movies + movieId;
+            return this.apiGetRequest(url);
         };
 
         // Petición post que inserta una película
