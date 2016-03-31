@@ -44,7 +44,7 @@
                 <div class="form-group" ng-class="{ 'has-success': movieForm.rating.$valid && movieForm.rating.$dirty, 'has-error': movieForm.rating.$invalid && movieForm.rating.$dirty }">
                     <label for="rating" class="col-sm-2 control-label">Puntuación</label>
                     <div class="col-sm-10">
-                        <input type="number" name="rating" class="form-control"  ng-model="model.release_date">
+                        <input type="number" name="rating" class="form-control"  ng-model="model.rating" min="0" max="10">
                     </div>
                 </div>
 
