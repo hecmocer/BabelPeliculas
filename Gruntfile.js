@@ -40,7 +40,8 @@ module.exports = function (grunt) {
         less: {
             build: {
                 files: {
-                    "dist/style.css": "bower_components/bootstrap/less/bootstrap.less",
+                    "dist/style.css": "less/style.less",
+                    
                 }
             }
         },
@@ -49,6 +50,10 @@ module.exports = function (grunt) {
             js: {
                 files: ['scripts/**/*.js', 'scripts/*.js'],
                 tasks: ['concat']
+            },
+            less: {
+                files: ['less/**.less'],
+                tasks: ['less']
             }
         }
 

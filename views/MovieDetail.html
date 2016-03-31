@@ -1,31 +1,31 @@
-<div ng-controller="MovieDetailController" class="row">
-    <div class="col-xs-8 col-sm-10 col-xs-offset-2 col-sm-offset-1 panel panel-default panel-body">
-        <div class="col-xs-10 col-sm-10 col-md-4 col-xs-offset-1 col-md-offset-0">
-            <img ng-src="{{::model.cover}}" class="img-responsive">
+<div ng-controller="MovieDetailController">
+    <div class="row">
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+            <img ng-src="{{::model.cover}}" class="cover img-responsive">
+            <button class="btn btn-success btn-block">Alquilar</button>
         </div>
-        <div class="col-md-8 col-xs-offset-1 col-md-offset-0">
-            <h1>{{::model.title }}</h1>
+        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
             <div class="row">
+                <div class="col-xs-12">
+                    <h1>{{::model.title }}</h1>
+                    <p>
+                        {{::model.overview }}
+                    </p>
+                </div>
                 <div class="col-xs-6">
+                    <span class="label label-info">{{::model.rating}}</span>
                     <span class="label label-primary">{{::model.release_date | date:"dd/MM/yyyy" }}</span>
                 </div>
-                <div class="col-xs-6">
-                    <div class="text-right">
-                        <span class="label label-info">{{::model.rating}}</span>
-                    </div>
-                </div>
             </div>
-            <br>
-            <p>
-                {{::model.overview }}
-            </p>
         </div>
     </div>
-
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="embed-responsive embed-responsive-16by9">
-            <video controls ng-src="{{ trustSrc() }}" type="video/mp4">
-            </video>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+            <div class="embed-responsive embed-responsive-16by9">
+                <video controls ng-src="{{ trustSrc() }}" type="video/mp4">
+                </video>
+            </div>
         </div>
     </div>
 </div>
