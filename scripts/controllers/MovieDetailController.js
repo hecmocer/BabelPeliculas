@@ -15,7 +15,10 @@ angular.module("moviedb").controller("MovieDetailController", ["$scope", "$route
 
         $scope.rentMovie = function() {
             APIClient.rentMovie($scope.model, Login.currentUser());
-            // $scope.$emit("$rentedMovie", $scope.model);
+        }
+
+        $scope.unrentMovie = function() {
+            APIClient.returnMovie($scope.model, Login.currentUser());
         }
 
         // Controller init
