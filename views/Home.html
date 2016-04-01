@@ -1,4 +1,14 @@
-<!--
-    ng-show login si no hay usuario en el scope
-    ng-show home si hay usuario en el scope -> include userdetail
--->
+<div ng-controller="HomeCtrl">
+    <h1>Mis películas</h1>
+    <div ng-include="'views/ProgressBar.html'" ng-show="uiState=='loading'">
+    </div>
+    <h2>Películas alquiladas</h2>
+    <div class="jumbotron" ng-show="uiState=='blank'">
+        <p class="lead">No tienes películas alquiladas</p>
+    </div>
+    <div class="alert alert-danger" ng-show="uiState=='error'">
+        Error al cargar los datos del servidor.
+    </div>
+    <div ng-include="'views/MovieCatalogue.html'" ng-show="uiState=='ideal'">
+    </div>
+</div>

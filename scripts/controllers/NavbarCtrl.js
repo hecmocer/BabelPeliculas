@@ -29,7 +29,7 @@ angular.module("moviedb").controller("NavbarCtrl", ["$scope", "$location", "path
         $scope.model.selectedItem = $location.path();
     });
 
-    $scope.$on("$navbarUsername", function (evt, user) {
+    $scope.$on("$userchange", function (evt, user) {
         $scope.model.currentUser = user.name;
     })
 }])

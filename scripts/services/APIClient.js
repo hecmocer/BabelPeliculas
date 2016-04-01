@@ -129,12 +129,12 @@ angular.module("moviedb").service("APIClient",
                         owner: user
                     }
 
-                    deferred.resolve(filter(response.data, search));
+                    deferred.resolve(filtro(response, search));
                 },
                 // Petición KO
                 function(response){
                     // Rechazar la promesa
-                    deferred.reject(response.data);
+                    deferred.reject(response);
                 });
 
 
@@ -159,8 +159,7 @@ angular.module("moviedb").service("APIClient",
                     var search = {
                         rented_by: user
                     }
-
-                    deferred.resolve(filter(response.data, search));
+                    deferred.resolve(filtro(response, search));
                 },
                 // Petición KO
                 function(response){

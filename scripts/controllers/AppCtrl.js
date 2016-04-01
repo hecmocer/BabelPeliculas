@@ -19,7 +19,7 @@ angular.module("moviedb").controller("AppCtrl", ["$scope", "$location", "paths",
     // methods
     controller.updateUser = function (name) {
     	$scope.model.user = name;
-    	$scope.$broadcast("$navbarUsername", {name: name});
+    	$scope.$broadcast("$userchange", {name: name});
     }
 
     // scope event listeners

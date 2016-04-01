@@ -8,7 +8,7 @@ angular.module("moviedb").controller("MovieListController",
     APIClient.getMovieList().then(
         // Lista de peliculas encontradas
         function(data){
-            $scope.model = data;
+            $scope.model = data || "";
             if($scope.model.length == 0){
                 $scope.uiState = 'blank';
             } else {
