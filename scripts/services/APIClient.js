@@ -90,13 +90,14 @@ angular.module("moviedb").service("APIClient",
             movie.owner = user;
             movie.rented_by = null;
             movie.last_rent_date = null;
-            movie.upload_date = null;
+            movie.upload_date = new Date();
             return this.apiPostRequest(apiPaths.movies, movie);
         };
 
         // Petición put que alquila una película
         this.rentMovie = function(data, user){
             data.rented_by = user;
+            data.last_rent_date = new Date();
             this.apiPutRequest(apiPaths.movies+'/'+data.id, data);
         };
 
