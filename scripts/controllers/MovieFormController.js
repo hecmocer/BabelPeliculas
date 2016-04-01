@@ -3,8 +3,26 @@ angular.module("moviedb").controller("MovieFormController",
 
         // Scope init
         $scope.model = {};
+        $scope.percent_progress = {};
         $scope.successMessage = null;
         $scope.errorMessage = null;
+
+        $scope.$watch('movieForm.title.$valid', function(newValue, oldValue) {
+            console.log("CAMBIO title", newValue);
+        });
+        $scope.$watch('movieForm.cover.$valid', function(newValue, oldValue) {
+            console.log("CAMBIO cover", newValue);
+        });
+        $scope.$watch('movieForm.video_url.$valid', function(newValue, oldValue) {
+            console.log("CAMBIO video_url", newValue);
+        });
+        $scope.$watch('movieForm.release_date.$valid', function(newValue, oldValue) {
+            console.log("CAMBIO relase_date", newValue);
+        });
+        $scope.$watch('movieForm.rating.$valid', function(newValue, oldValue) {
+            console.log("CAMBIO rating", newValue);
+        });
+
 
         // Scope methods
         $scope.saveMovie = function(){
