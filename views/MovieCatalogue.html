@@ -1,0 +1,42 @@
+<div class="panel panel-default panel-body">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Carátula</th>
+                <th>Título</th>
+                <th>Fecha lanzamiento</th>
+                <th>
+                    <input type="search" ng-model="query.title" class="form-control input-sm" placeholder="Buscar...">
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in model | filter:query">
+                <td>
+                    <a href="#/movies/{{::item.id}}">
+                        <img ng-src="{{::item.cover}}" alt="{{::item.title}}'s cover" title="{{::item.title}}" width='70'>
+                    </a>
+                </td>
+                <td>
+                    <a href="#/movies/{{::item.id}}">
+                        {{::item.title}}
+                    </a>
+                </td>
+                <td>
+                    {{::item.release_date | date:"dd/MM/yyyy"}}
+                </td>
+                <td>
+                    <a href="#/movies/{{::item.id}}">
+                        <div ng-if="item.rented_by === null">
+                            <div class="label label-success">DISPONIBLE</div>
+                        </div>
+                        <div ng-if="item.rented_by !== null">
+                            <div class="label label-warning">ALQUILADA</div>
+                        </div>
+                    </a>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -14,9 +14,11 @@ module.exports = function (grunt) {
             app: {
                 src: [
                     // Cargamos los paquetes instalados con bower y el codigo fuente de la aplicacion
-                    'bower_components/bootstrap/dist/js/bootstrap.js',
                     'bower_components/angular/angular.js',
-                    'bower_components/angular-route/angular-route.min.js',
+                    'bower_components/angular-route/angular-route.js',
+                    'bower_components/angular-sanitize/angular-sanitize.js',
+                    'bower_components/jquery/dist/jquery.js',
+                    'bower_components/bootstrap/dist/js/bootstrap.js',
                     'scripts/**/*.js',
                     'scripts/*.js'
                 ],
@@ -38,7 +40,8 @@ module.exports = function (grunt) {
         less: {
             build: {
                 files: {
-                    "dist/style.css": "bower_components/bootstrap/less/bootstrap.less",
+                    "dist/style.css": "less/style.less",
+                    
                 }
             }
         },
@@ -47,6 +50,10 @@ module.exports = function (grunt) {
             js: {
                 files: ['scripts/**/*.js', 'scripts/*.js'],
                 tasks: ['concat']
+            },
+            less: {
+                files: ['less/**.less'],
+                tasks: ['less']
             }
         }
 

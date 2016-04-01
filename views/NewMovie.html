@@ -1,0 +1,76 @@
+<div ng-controller="MovieFormController">
+    <h1>Crear película</h1>
+    <br>
+    <div class="alert alert-success" ng-show="successMessage" ng-bind-html="successMessage"></div>
+    <div class="alert alert-error" ng-show="errorMessage" ng-bind-html="errorMessage"></div>
+    <form name="movieForm" class="form-horizontal" novalidate ng-submit="movieForm.$valid && saveMovie()">
+        <div class="form-group" ng-class="{ 'has-success': movieForm.title.$valid && movieForm.title.$dirty, 'has-error': movieForm.title.$invalid && movieForm.title.$dirty }">
+            <label for="title" class="col-sm-2 control-label">Título</label>
+            <div class="col-sm-9">
+                <input type="text" name="title" class="form-control" ng-model="model.title" required>
+            </div>
+            <div class="col-sm-1">
+                <span class="glyphicon margin_top_class" ng-class="{ 'glyphicon-ok green_class': movieForm.title.$valid && movieForm.title.$dirty, 'glyphicon-remove red_class': movieForm.title.$invalid && movieForm.title.$dirty , 'glyphicon-pencil': movieForm.title.$pristine }"></span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-success': movieForm.cover.$valid && movieForm.cover.$dirty, 'has-error': movieForm.cover.$invalid && movieForm.cover.$dirty }">
+            <label for="cover" class="col-sm-2 control-label">Carátula</label>
+            <div class="col-sm-9">
+                <input type="url" name="cover" placeholder="http://" class="form-control" ng-model="model.cover" required>
+            </div>
+            <div class="col-sm-1">
+                <span class="glyphicon margin_top_class" ng-class="{ 'glyphicon-ok green_class': movieForm.cover.$valid && movieForm.cover.$dirty, 'glyphicon-remove red_class': movieForm.cover.$invalid && movieForm.cover.$dirty, 'glyphicon-pencil': movieForm.cover.$pristine }"></span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-success': movieForm.video_url.$valid && movieForm.video_url.$dirty, 'has-error': movieForm.video_url.$invalid && movieForm.video_url.$dirty }">
+            <label for="video_url" class="col-sm-2 control-label">Url del video</label>
+            <div class="col-sm-9">
+                <input type="url" name="video_url" placeholder="http://" class="form-control" ng-model="model.video_url" required>
+            </div>
+            <div class="col-sm-1">
+                <span class="glyphicon margin_top_class" ng-class="{ 'glyphicon-ok green_class': movieForm.video_url.$valid && movieForm.video_url.$dirty, 'glyphicon-remove red_class': movieForm.video_url.$invalid && movieForm.video_url.$dirty, 'glyphicon-pencil': movieForm.video_url.$pristine }"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div ng-class="{ 'has-success': movieForm.release_date.$valid && movieForm.release_date.$dirty, 'has-error': movieForm.release_date.$invalid && movieForm.release_date.$dirty }">
+                <label for="release_date" class="col-sm-2 control-label">Fecha de estreno</label>
+                <div class="col-sm-4">
+                    <input type="date" name="release_date" class="form-control" ng-model="model.release_date" required>
+                </div>
+                <div class="col-sm-1">
+                    <span class="glyphicon margin_top_class" ng-class="{ 'glyphicon-ok green_class': movieForm.release_date.$valid && movieForm.release_date.$dirty, 'glyphicon-remove red_class': movieForm.release_date.$invalid && movieForm.release_date.$dirty, 'glyphicon-pencil': movieForm.release_date.$pristine }"></span>
+                </div>
+            </div>
+            <div ng-class="{ 'has-success': movieForm.rating.$valid && movieForm.rating.$dirty, 'has-error': movieForm.rating.$invalid && movieForm.rating.$dirty }">
+                <label for="rating" class="col-sm-2 control-label">Puntuación</label>
+                <div class="col-sm-2">
+                    <input type="number" name="rating" placeholder="0.0" class="form-control" ng-model="model.rating" min="0" max="10" required>
+                </div>
+                <div class="col-sm-1">
+                    <span class="glyphicon margin_top_class" ng-class="{ 'glyphicon-ok green_class': movieForm.rating.$valid && movieForm.rating.$dirty, 'glyphicon-remove red_class': movieForm.rating.$invalid && movieForm.rating.$dirty, 'glyphicon-pencil': movieForm.rating.$pristine }"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Opcional
+            </div>
+            <div class="panel-body">
+                <div class="form-group" ng-class="{ 'has-success': movieForm.overview.$valid && movieForm.overview.$dirty, 'has-error': movieForm.overview.$invalid && movieForm.overview.$dirty }">
+                    <label for="overview" class="col-sm-2 control-label">Breve descripción</label>
+                    <div class="col-sm-10">
+                        <textarea name="overview" ng-model="model.overview" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="progress margin_top_class">
+                <div class="progress-bar progress-bar-success progress-bar-striped" style="width: {{percent_progress_ok}}%"></div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-primary pull-right" type="submit" ng-disabled="movieForm.$invalid">Crear película!</button>
+        </div>
+    </form>
+</div>

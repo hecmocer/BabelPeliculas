@@ -1,0 +1,13 @@
+<div class="container" ng-controller="LoginCtrl">
+    <h1 id="title">Bienvenido a BabelPelículas
+        <span><img id="brand" src="../public/icon.png" alt=""></span>
+    </h1>
+    <form class="form-signin" novalidate ng-submit="login(model.username)">
+        <h2 class="form-signin-heading">Inicia sesión</h2>
+        <label for="inputUsername" class="sr-only">Nombre de usuario</label>
+        <input id="inputUsername" class="form-control" placeholder="Username" required autofocus ng-model="model.username">
+        <label for="inputPassword" class="sr-only">Contraseña</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
+    </form>
+</div>
