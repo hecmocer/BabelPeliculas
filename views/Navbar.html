@@ -18,7 +18,7 @@
                 <li ng-class="getClassForItem(paths.newMovie)"><a href="#{{::paths.newMovie}}">Subir película</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a>Logueado como: {{ model.currentUser }}</a></li>
+                <li><a href="#/home">Usuario: {{ model.currentUser }}</a></li>
                 <li class="btn btn-primary navbar-btn" ng-click="logout()">Logout</li>
             </ul>
         </div>
