@@ -3,26 +3,39 @@ angular.module("moviedb").controller("MovieFormController",
 
         // Scope init
         $scope.model = {};
-        $scope.percent_progress = {};
+        $scope.percent_progress_ok = 0;
         $scope.successMessage = null;
         $scope.errorMessage = null;
 
+        updateFieldValidation = function(newValue, oldValue){
+            if(newValue){
+                console.log("Valido!");
+                $scope.percent_progress_ok += 20;
+            }else{
+                console.log("Incorrecto");
+                $scope.percent_progress_ok -= 20;
+            }
+        }
+
+        updateFieldPristine = function(newValue, oldValue){
+
+        }
+
         $scope.$watch('movieForm.title.$valid', function(newValue, oldValue) {
-            console.log("CAMBIO title", newValue);
+            updateFieldValidation(newValue, oldValue);
         });
         $scope.$watch('movieForm.cover.$valid', function(newValue, oldValue) {
-            console.log("CAMBIO cover", newValue);
+            updateFieldValidation(newValue, oldValue);
         });
         $scope.$watch('movieForm.video_url.$valid', function(newValue, oldValue) {
-            console.log("CAMBIO video_url", newValue);
+            updateFieldValidation(newValue, oldValue);
         });
         $scope.$watch('movieForm.release_date.$valid', function(newValue, oldValue) {
-            console.log("CAMBIO relase_date", newValue);
+            updateFieldValidation(newValue, oldValue);
         });
         $scope.$watch('movieForm.rating.$valid', function(newValue, oldValue) {
-            console.log("CAMBIO rating", newValue);
+            updateFieldValidation(newValue, oldValue);
         });
-
 
         // Scope methods
         $scope.saveMovie = function(){
