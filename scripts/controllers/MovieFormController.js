@@ -9,10 +9,8 @@ angular.module("moviedb").controller("MovieFormController",
 
         updateFieldValidation = function(newValue, oldValue){
             if(newValue){
-                console.log("Valido!");
                 $scope.percent_progress_ok += 20;
             }else{
-                console.log("Incorrecto");
                 $scope.percent_progress_ok -= 20;
             }
         }
